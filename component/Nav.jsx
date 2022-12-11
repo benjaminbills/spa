@@ -1,11 +1,27 @@
-import { Box, Center, Flex, HStack, IconButton, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Flex,
+  HStack,
+  IconButton,
+  StackDivider,
+  Text,
+} from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 const Nav = ({ open }) => {
   return (
     <Box>
       <Flex alignItems={'center'} justifyContent={'space-between'}>
-        <HStack spacing={4} alignItems={'center'}>
+        <HStack
+          spacing={'auto'}
+          divider={<StackDivider />}
+          align='stretch'
+          width={'container.xl'}
+          height={'58'}
+          alignItems='center'
+          backgroundColor={'#4FC2D6'}
+        >
           <NextLink href={'/'} passHref>
             Home
           </NextLink>

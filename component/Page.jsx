@@ -4,7 +4,7 @@ import Nav from './Nav';
 
 const Page = ({ children }) => {
   return (
-    <Container maxW={'container.xl'}>
+    <Container color={'#555555'} maxW={'container.xl'}>
       <Header />
       <Nav open={true} />
       {children}
