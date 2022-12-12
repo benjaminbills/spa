@@ -44,7 +44,7 @@ const Nav = ({ open }) => {
                 About us
               </Text>
             </NextLink>
-            <NextLink href={'/contact'}>
+            <NextLink href={'/services/hairandnail'}>
               <Text px={2} py={1} rounded={'md'}>
                 Hair & Nail
               </Text>
