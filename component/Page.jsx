@@ -1,4 +1,5 @@
 import { Box, Button, Container, Text } from '@chakra-ui/react';
+import Footer from './Footer';
 import Header from './Header';
 import Nav from './Nav';
 
@@ -8,6 +9,7 @@ const Page = ({ children }) => {
       <Header />
       {/* <Nav /> */}
       {children}
+      <Footer />
     </Container>
   );
 };
