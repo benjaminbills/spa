@@ -6,7 +6,7 @@ const Page = ({ children }) => {
   return (
     <Container color={'#555555'} maxW={'container.xl'}>
       <Header />
-      <Nav open={true} />
+      {/* <Nav /> */}
       {children}
     </Container>
   );
