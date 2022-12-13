@@ -35,6 +35,8 @@ const Login = () => {
           </TabPanel>
           <TabPanel>
             <FormControl>
+              <FormLabel>Name</FormLabel>
+              <Input type='text' />
               <FormLabel>Email</FormLabel>
               <Input type='email' />
               <FormLabel>Password</FormLabel>
