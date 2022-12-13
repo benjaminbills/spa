@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-
+import NextLink from 'next/link';
 const Home = () => {
   return (
     <Box pt={12} pb={12}>
@@ -58,11 +58,15 @@ const Home = () => {
               />
               <Stack mt='6' spacing='3'>
                 <Heading size='md'>Women's Corner</Heading>
-                <Text>Dreads, weave,</Text>
               </Stack>
             </CardBody>
             <CardFooter display={'flex'} justifyContent='right'>
-              <Button variant='outline' colorScheme='whatsapp'>
+              <Button
+                as={NextLink}
+                href='/services/women'
+                variant='outline'
+                colorScheme='cyan'
+              >
                 Book now
               </Button>
             </CardFooter>
@@ -76,11 +80,15 @@ const Home = () => {
               />
               <Stack mt='6' spacing='3'>
                 <Heading size='md'>Men's Corner</Heading>
-                <Text>Men's Corner</Text>
               </Stack>
             </CardBody>
             <CardFooter display={'flex'} justifyContent='right'>
-              <Button variant='outline' colorScheme='whatsapp'>
+              <Button
+                as={NextLink}
+                href='/services/men'
+                variant='outline'
+                colorScheme='cyan'
+              >
                 Book now
               </Button>
             </CardFooter>
@@ -96,11 +104,15 @@ const Home = () => {
               />
               <Stack mt='6' spacing='3'>
                 <Heading size='md'>Kid's Corner</Heading>
-                <Text>Dreads, weave,</Text>
               </Stack>
             </CardBody>
             <CardFooter display={'flex'} justifyContent='right'>
-              <Button variant='outline' colorScheme='whatsapp'>
+              <Button
+                as={NextLink}
+                href='/services/kids'
+                variant='outline'
+                colorScheme='cyan'
+              >
                 Book now
               </Button>
             </CardFooter>
@@ -114,11 +126,15 @@ const Home = () => {
               />
               <Stack mt='6' spacing='3'>
                 <Heading size='md'>Massage</Heading>
-                <Text>Men's Corner</Text>
               </Stack>
             </CardBody>
             <CardFooter display={'flex'} justifyContent='right'>
-              <Button variant='outline' colorScheme='whatsapp'>
+              <Button
+                as={NextLink}
+                href='/services/massage'
+                variant='outline'
+                colorScheme='cyan'
+              >
                 Book now
               </Button>
             </CardFooter>

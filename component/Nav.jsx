@@ -49,12 +49,12 @@ const Nav = ({ open }) => {
                 Hair & Nail
               </Text>
             </NextLink>
-            <NextLink href={'/contact'}>
+            <NextLink href={'/services/skincare'}>
               <Text px={2} py={1} rounded={'md'}>
                 Skin care & Facials
               </Text>
             </NextLink>
-            <NextLink href={'/contact'}>
+            <NextLink href={'/services/bodytreatment'}>
               <Text px={2} py={1} rounded={'md'}>
                 Body Treatment
               </Text>

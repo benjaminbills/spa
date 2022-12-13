@@ -1,7 +1,7 @@
 import { Box, Heading, Stack, Image, Text, Divider } from '@chakra-ui/react';
 import CalendarDate from './CalendarDate';
 
-const HairNail = () => {
+const Massage = () => {
   return (
     <Box pt={12}>
       <Stack
@@ -9,7 +9,7 @@ const HairNail = () => {
         direction={['column', 'row', 'row']}
       >
         <Box maxW={['100%', '50%', '50%']}>
-          <Heading>Hair and Nail</Heading>
+          <Heading>Massage </Heading>
           <Box pt={4}>
             <Text>
               The Olakira hair spa provides intensive hair treatments to fix
@@ -17,7 +17,7 @@ const HairNail = () => {
               hair from over coloring to dealing with volume challenges on thin
               & limp hair.
             </Text>
-            <Image pt={4} src='/images/hair1.jpg' />
+            <Image pt={4} src='/images/massage2.jpg' />
             <Text pt={4} fontWeight={'bold'} fontSize={'xl'}>
               Hair Therapy (60 mins)
             </Text>
@@ -32,6 +32,12 @@ const HairNail = () => {
               Wash and brush blow-dry with a leave-in treatment to keep your
               hair healthy.
             </Text>
+            <Text pt={4} fontWeight={'bold'} fontSize={'xl'}>
+              SPA Therapy (60 mins) ~ Kes 3500
+            </Text>
+            <Text>Unwind Body Massage</Text>
+            <Text>Prenatal Massage</Text>
+            <Text>Pamper Me Pedicure</Text>
           </Box>
         </Box>
         <Box maxW={['100%', '45%', '40%']}>
@@ -47,4 +53,4 @@ const HairNail = () => {
   );
 };
 
-export default HairNail;
+export default Massage;

@@ -30,7 +30,9 @@ const Login = () => {
               <Input type='email' />
               <FormLabel>Password</FormLabel>
               <Input type='password' />
-              <Button mt={4}>Submit</Button>
+              <Button colorScheme={'cyan'} mt={4}>
+                Submit
+              </Button>
             </FormControl>
           </TabPanel>
           <TabPanel>
@@ -43,7 +45,9 @@ const Login = () => {
               <Input type='password' />
               <FormLabel>Confirm Password</FormLabel>
               <Input type='password' />
-              <Button mt={4}>Submit</Button>
+              <Button colorScheme={'cyan'} mt={4}>
+                Submit
+              </Button>
             </FormControl>
           </TabPanel>
         </TabPanels>
