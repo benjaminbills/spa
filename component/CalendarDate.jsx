@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   FormControl,
   FormLabel,
@@ -21,6 +22,9 @@ const CalendarDate = () => {
         onChange={setDate}
         defaultActiveStartDate={new Date()}
         value={date}
+        tileDisabled={({ activeStartDate, date, view }) =>
+          date.getDay() > new Date()
+        }
       />
       <Text pt={'2'} pb={'2'} fontWeight={'bold'}>
         Time Slots*:
@@ -61,6 +65,9 @@ const CalendarDate = () => {
         <FormLabel>Details:</FormLabel>
         <Textarea />
       </FormControl>
+      <Box display={'flex'} justifyContent='right' pt='2'>
+        <Button colorScheme={'cyan'}>Submit</Button>
+      </Box>
     </div>
   );
 };

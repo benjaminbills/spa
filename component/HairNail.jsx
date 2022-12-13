@@ -4,7 +4,10 @@ import CalendarDate from './CalendarDate';
 const HairNail = () => {
   return (
     <Box pt={12}>
-      <Stack spacing={'10%'} direction={['column', 'row', 'row']}>
+      <Stack
+        spacing={['10%', '5%', '10%']}
+        direction={['column', 'row', 'row']}
+      >
         <Box maxW={['100%', '50%', '50%']}>
           <Heading>Hair and Nail</Heading>
           <Box pt={4}>
@@ -17,7 +20,7 @@ const HairNail = () => {
             <Image pt={4} src='/images/hair1.jpg' />
           </Box>
         </Box>
-        <Box maxW={['100%', '40%', '40%']}>
+        <Box maxW={['100%', '45%', '40%']}>
           <Text as={'h1'} fontSize='lg' fontWeight={'bold'}>
             Book An Appointment
           </Text>
