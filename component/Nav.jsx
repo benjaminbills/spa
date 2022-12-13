@@ -39,11 +39,11 @@ const Nav = ({ open }) => {
             <NextLink href={'/'} passHref>
               <Text ml={2}>Home</Text>
             </NextLink>
-            <NextLink href={'/contact'}>
+            {/* <NextLink href={'/contact'}>
               <Text px={2} py={1} rounded={'md'}>
                 About us
               </Text>
-            </NextLink>
+            </NextLink> */}
             <NextLink href={'/services/hairandnail'}>
               <Text px={2} py={1} rounded={'md'}>
                 Hair & Nail
@@ -62,6 +62,11 @@ const Nav = ({ open }) => {
             <NextLink href={'/contact'}>
               <Text px={2} py={1} rounded={'md'}>
                 Contact
+              </Text>
+            </NextLink>
+            <NextLink href={'/login'}>
+              <Text px={2} py={1} rounded={'md'}>
+                Login
               </Text>
             </NextLink>
           </HStack>
@@ -89,7 +94,7 @@ const Nav = ({ open }) => {
                   Home
                 </Box>
               </NextLink>
-              <NextLink href={'/about'}>
+              {/* <NextLink href={'/about'}>
                 <Box
                   px={2}
                   py={1}
@@ -101,7 +106,7 @@ const Nav = ({ open }) => {
                 >
                   About
                 </Box>
-              </NextLink>
+              </NextLink> */}
               <NextLink href={'/catalog'}>
                 <Box
                   px={2}

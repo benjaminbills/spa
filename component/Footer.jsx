@@ -1,9 +1,11 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Container, Text } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Box position={'absolute'} top='100%' bottom={'0'}>
-      <Text>Copyright © 2022 SPA</Text>
+    <Box h={12} mt='30%' backgroundColor={'#4FC2D6'} position={'relative'}>
+      <Text pt={2} color={'white'}>
+        Copyright © 2022 SPA
+      </Text>
     </Box>
   );
 };
