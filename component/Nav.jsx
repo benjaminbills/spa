@@ -69,6 +69,11 @@ const Nav = ({ open }) => {
                 Login
               </Text>
             </NextLink>
+            <NextLink href={'/appointment'}>
+              <Text px={2} py={1} rounded={'md'}>
+                Appointment
+              </Text>
+            </NextLink>
           </HStack>
         </Hide>
         {open ? (
