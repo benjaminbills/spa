@@ -2,7 +2,7 @@ import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
 
 const FlutterWavePayment = ({ email, phone, name, amount }) => {
   const config = {
-    public_key: `${process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY}`,
+    public_key: `${process.env.NEXT_PUBLIC_FLUTTER_KEY}`,
     tx_ref: Date.now(),
     amount: amount,
     currency: 'KES',
