@@ -13,18 +13,19 @@ import {
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import FlutterWavePayment from './FlutterWavePayment';
 
 const CalendarDate = () => {
   const [date, setDate] = useState(new Date());
+  const onSubmit = () => {
+    console.log('successful');
+  };
   return (
     <div>
       <Calendar
         onChange={setDate}
         defaultActiveStartDate={new Date()}
         value={date}
-        tileDisabled={({ activeStartDate, date, view }) =>
-          date.getDay() > new Date()
-        }
       />
       <Text pt={'2'} pb={'2'} fontWeight={'bold'}>
         Time Slots*:
@@ -62,11 +63,23 @@ const CalendarDate = () => {
         <Select>
           <option>Select Service</option>
         </Select>
+        <FormLabel>Phone number</FormLabel>
+        <Input placeholder='070700000' />
+        <FormLabel>Amount</FormLabel>
+        <Input readOnly placeholder='070700000' value={'3500'} />
         <FormLabel>Details:</FormLabel>
         <Textarea />
       </FormControl>
       <Box display={'flex'} justifyContent='right' pt='2'>
-        <Button colorScheme={'cyan'}>Submit</Button>
+        <FlutterWavePayment
+          onSubmit={onSubmit}
+          amount={'1000'}
+          name='benjamin'
+          phone='0743156011'
+          email={'obafemibenjamins@gmail.com'}
+        />
+
+        {/* <Button colorScheme={'cyan'}>Submit</Button> */}
       </Box>
     </div>
   );
