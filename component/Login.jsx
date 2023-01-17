@@ -24,23 +24,40 @@ const Login = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const handleLogin = () => {
     // Perform login logic here
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        RequestRefID: '{{$timestamp}}',
+        Timestamp: '{{$timestamp}}',
+        OperationVersion: '1',
+        SourceSystem: 'WEB',
+      },
+    };
     axios
-      .post('localhost', {
-        Data: [
-          {
-            Key: 'email',
-            Value: email,
-          },
-          {
-            Key: 'password',
-            Value: password,
-          },
-        ],
-      })
+      .post(
+        'localhost',
+        {
+          Data: [
+            {
+              Key: 'email',
+              Value: email,
+            },
+            {
+              Key: 'password',
+              Value: password,
+            },
+          ],
+        },
+        config
+      )
       .then(() => setIsLoggedIn(true))
       .catch((e) => console.log(e));
     console.log(email, password);
     setIsLoggedIn(true);
+  };
+  const registerHandler = (event) => {
+    event.preventDefault();
+    console.log('working');
   };
   return (
     <Box display={'flex'} justifyContent={'center'} pt={14}>
@@ -65,19 +82,25 @@ const Login = () => {
             </FormControl>
           </TabPanel>
           <TabPanel>
-            <FormControl>
-              <FormLabel>Name</FormLabel>
-              <Input onChange={(e) => setName(e.target.value)} type='text' />
-              <FormLabel>Email</FormLabel>
-              <Input type='email' />
-              <FormLabel>Password</FormLabel>
-              <Input type='password' />
-              <FormLabel>Confirm Password</FormLabel>
-              <Input type='password' />
-              <Button colorScheme={'cyan'} mt={4}>
-                Submit
-              </Button>
-            </FormControl>
+            <form onSubmit={registerHandler}>
+              <FormControl>
+                <FormLabel>Email</FormLabel>
+                <Input type='email' />
+                <FormLabel>First Name</FormLabel>
+                <Input onChange={(e) => setName(e.target.value)} type='text' />
+                <FormLabel>Phone</FormLabel>
+                <Input type='number' />
+                <FormLabel>Last Name</FormLabel>
+                <Input type='text' />
+                <FormLabel>Password</FormLabel>
+                <Input type='password' />
+                <FormLabel>Confirm Password</FormLabel>
+                <Input type='password' />
+                <Button type='submit' colorScheme={'cyan'} mt={4}>
+                  Submit
+                </Button>
+              </FormControl>
+            </form>
           </TabPanel>
         </TabPanels>
       </Tabs>
