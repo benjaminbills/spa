@@ -20,6 +20,9 @@ import { LoginContext } from './context';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const handleLogin = () => {
@@ -57,6 +60,9 @@ const Login = () => {
   };
   const registerHandler = (event) => {
     event.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Password does not match');
+    }
     console.log('working');
   };
   return (
@@ -85,17 +91,32 @@ const Login = () => {
             <form onSubmit={registerHandler}>
               <FormControl>
                 <FormLabel>Email</FormLabel>
-                <Input type='email' />
+                <Input
+                  type='email'
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <FormLabel>First Name</FormLabel>
                 <Input onChange={(e) => setName(e.target.value)} type='text' />
                 <FormLabel>Phone</FormLabel>
-                <Input type='number' />
+                <Input
+                  type='number'
+                  onChange={(e) => setPhone(e.target.value)}
+                />
                 <FormLabel>Last Name</FormLabel>
-                <Input type='text' />
+                <Input
+                  type='text'
+                  onChange={(e) => setLastName(e.target.value)}
+                />
                 <FormLabel>Password</FormLabel>
-                <Input type='password' />
+                <Input
+                  type='password'
+                  onChange={(e) => setPassword(e.target.value)}
+                />
                 <FormLabel>Confirm Password</FormLabel>
-                <Input type='password' />
+                <Input
+                  type='password'
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
                 <Button type='submit' colorScheme={'cyan'} mt={4}>
                   Submit
                 </Button>
