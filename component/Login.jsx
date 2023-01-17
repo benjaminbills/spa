@@ -13,9 +13,35 @@ import {
   Tabs,
   Text,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import axios from 'axios';
+import { useContext, useState } from 'react';
+import { LoginContext } from './context';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+  const handleLogin = () => {
+    // Perform login logic here
+    axios
+      .post('localhost', {
+        Data: [
+          {
+            Key: 'email',
+            Value: email,
+          },
+          {
+            Key: 'password',
+            Value: password,
+          },
+        ],
+      })
+      .then(() => setIsLoggedIn(true))
+      .catch((e) => console.log(e));
+    console.log(email, password);
+    setIsLoggedIn(true);
+  };
   return (
     <Box display={'flex'} justifyContent={'center'} pt={14}>
       <Tabs isFitted variant='enclosed'>
@@ -27,10 +53,13 @@ const Login = () => {
           <TabPanel>
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input type='email' />
+              <Input type='email' onChange={(e) => setEmail(e.target.value)} />
               <FormLabel>Password</FormLabel>
-              <Input type='password' />
-              <Button colorScheme={'cyan'} mt={4}>
+              <Input
+                type='password'
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button onClick={handleLogin} colorScheme={'cyan'} mt={4}>
                 Submit
               </Button>
             </FormControl>
@@ -38,7 +67,7 @@ const Login = () => {
           <TabPanel>
             <FormControl>
               <FormLabel>Name</FormLabel>
-              <Input type='text' />
+              <Input onChange={(e) => setName(e.target.value)} type='text' />
               <FormLabel>Email</FormLabel>
               <Input type='email' />
               <FormLabel>Password</FormLabel>
