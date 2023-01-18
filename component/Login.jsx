@@ -58,8 +58,6 @@ const Login = () => {
         setIsLoggedIn(true);
       })
       .catch((e) => console.log(e));
-    console.log(email, password);
-    setIsLoggedIn(true);
   };
   //   Access to XMLHttpRequest at 'http://localhost:8090/api/spa/useroperations/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 
@@ -69,7 +67,52 @@ const Login = () => {
     if (password !== confirmPassword) {
       alert('Password does not match');
     }
-    console.log('working');
+    const data = {
+      ServiceRequest: {
+        Header: {
+          RequestRefID: '{{$timestamp}}',
+          Timestamp: '{{$timestamp}}',
+          OperationVersion: '1',
+          SourceSystem: 'WEB',
+        },
+        Body: {
+          Data: [
+            {
+              Key: 'email',
+              Value: email,
+            },
+            {
+              Key: 'first_name',
+              Value: name,
+            },
+            {
+              Key: 'last_name',
+              Value: lastName,
+            },
+            {
+              Key: 'contact_no',
+              Value: phone,
+            },
+            {
+              Key: 'permission_id',
+              Value: '2',
+            },
+            {
+              Key: 'password',
+              Value: password,
+            },
+          ],
+        },
+      },
+    };
+
+    axios
+      .post('http://localhost:8090/api/spa/useroperations/login', data)
+      .then(() => {
+        router.push('/login');
+        alert('Successfully registered.');
+      })
+      .catch((e) => alert('Please fill the form properly'));
   };
   return (
     <Box display={'flex'} justifyContent={'center'} pt={14}>
@@ -99,27 +142,36 @@ const Login = () => {
                 <FormLabel>Email</FormLabel>
                 <Input
                   type='email'
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <FormLabel>First Name</FormLabel>
-                <Input onChange={(e) => setName(e.target.value)} type='text' />
+                <Input
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                  type='text'
+                />
                 <FormLabel>Phone</FormLabel>
                 <Input
+                  required
                   type='number'
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <FormLabel>Last Name</FormLabel>
                 <Input
+                  required
                   type='text'
                   onChange={(e) => setLastName(e.target.value)}
                 />
                 <FormLabel>Password</FormLabel>
                 <Input
+                  required
                   type='password'
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <FormLabel>Confirm Password</FormLabel>
                 <Input
+                  required
                   type='password'
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
