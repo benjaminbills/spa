@@ -27,6 +27,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const handleLogin = () => {
     // Perform login logic here
     const data = {
@@ -107,22 +110,29 @@ const Login = () => {
     };
 
     axios
-      .post('http://localhost:8090/api/spa/useroperations/login', data)
+      .post('http://localhost:8082/api/spa/useronboarding/register', data)
       .then(() => {
-        router.push('/login');
         alert('Successfully registered.');
+        setActiveIndex(0);
       })
-      .catch((e) => alert('Please fill the form properly'));
+      .catch((e) => {
+        console.log(e);
+      });
   };
   return (
     <Box display={'flex'} justifyContent={'center'} pt={14}>
-      <Tabs isFitted variant='enclosed'>
+      <Tabs
+        index={activeIndex}
+        onChange={setActiveIndex}
+        isFitted
+        variant='enclosed'
+      >
         <TabList mb='1em'>
-          <Tab>Login</Tab>
-          <Tab>Sign Up</Tab>
+          <Tab onClick={() => setActiveIndex(0)}>Login</Tab>
+          <Tab onClick={() => setActiveIndex(1)}>Sign Up</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>
+          <TabPanel hidden={activeTab !== 0}>
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input type='email' onChange={(e) => setEmail(e.target.value)} />
@@ -136,7 +146,7 @@ const Login = () => {
               </Button>
             </FormControl>
           </TabPanel>
-          <TabPanel>
+          <TabPanel hidden={activeTab !== 1}>
             <form onSubmit={registerHandler}>
               <FormControl>
                 <FormLabel>Email</FormLabel>

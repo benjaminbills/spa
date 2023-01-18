@@ -16,8 +16,12 @@ import {
   MenuItem,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { useContext } from 'react';
+import { LoginContext } from './context';
 
 const Nav = ({ open }) => {
+  const { isLoggedIn } = useContext(LoginContext);
+
   return (
     <Box
       fontSize={['lg', 'lg', 'sm']}
@@ -64,11 +68,13 @@ const Nav = ({ open }) => {
                 Contact
               </Text>
             </NextLink>
-            <NextLink href={'/login'}>
-              <Text px={2} py={1} rounded={'md'}>
-                Login
-              </Text>
-            </NextLink>
+            {!isLoggedIn && (
+              <NextLink href={'/login'}>
+                <Text px={2} py={1} rounded={'md'}>
+                  Login
+                </Text>
+              </NextLink>
+            )}
             <NextLink href={'/appointment'}>
               <Text px={2} py={1} rounded={'md'}>
                 Appointment
