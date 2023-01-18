@@ -10,6 +10,7 @@ import {
   Box,
 } from '@chakra-ui/react';
 const Appointment = () => {
+  const url = 'http://localhost:8090/api/spa/useroperations/service/fetchall';
   return (
     <Box pt={12}>
       <TableContainer>

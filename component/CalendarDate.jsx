@@ -10,13 +10,42 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import axios from 'axios';
+
+import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import FlutterWavePayment from './FlutterWavePayment';
 
 const CalendarDate = () => {
   const [date, setDate] = useState(new Date());
+  const [phone, setPhone] = useState('');
+  const [services, setServices] = useState('');
+  const timeslot = [{}, {}];
+  useEffect(() => {
+    const data = {
+      ServiceRequest: {
+        Header: {
+          RequestRefID: '{{$timestamp}}',
+          Timestamp: '{{$timestamp}}',
+          OperationVersion: '1',
+          SourceSystem: 'WEB',
+        },
+        Body: {
+          Data: [],
+        },
+      },
+    };
+    axios
+      .get(
+        'http://localhost:8090/api/spa/useroperations/service/fetchall',
+        data
+      )
+      .then((res) => {
+        // setServices(res.)
+        console.log(res);
+      });
+  }, [services]);
   const onSubmit = () => {
     console.log('successful');
   };
@@ -64,7 +93,10 @@ const CalendarDate = () => {
           <option>Select Service</option>
         </Select>
         <FormLabel>Phone number</FormLabel>
-        <Input placeholder='070700000' />
+        <Input
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder='070700000'
+        />
         <FormLabel>Amount</FormLabel>
         <Input readOnly placeholder='070700000' value={'3500'} />
         <FormLabel>Details:</FormLabel>
@@ -75,7 +107,7 @@ const CalendarDate = () => {
           onSubmit={onSubmit}
           amount={'1000'}
           name='benjamin'
-          phone='0743156011'
+          phone={phone}
           email={'obafemibenjamins@gmail.com'}
         />
 
