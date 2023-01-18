@@ -52,7 +52,7 @@ const Login = () => {
       },
     };
     axios
-      .post('localhost', data)
+      .post('http://localhost:8090/api/spa/useroperations/login', data)
       .then(() => {
         router.push('/');
         setIsLoggedIn(true);
