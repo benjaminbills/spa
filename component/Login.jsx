@@ -16,6 +16,7 @@ import {
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { LoginContext } from './context';
+import { useRouter } from 'next/dist/client/router';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,21 +26,18 @@ const Login = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+  const router = useRouter();
   const handleLogin = () => {
     // Perform login logic here
-    const config = {
-      headers: {
-        'Content-type': 'application/json',
-        RequestRefID: '{{$timestamp}}',
-        Timestamp: '{{$timestamp}}',
-        OperationVersion: '1',
-        SourceSystem: 'WEB',
-      },
-    };
-    axios
-      .post(
-        'localhost',
-        {
+    const data = {
+      ServiceRequest: {
+        Header: {
+          RequestRefID: '{{$timestamp}}',
+          Timestamp: '{{$timestamp}}',
+          OperationVersion: '1',
+          SourceSystem: 'WEB',
+        },
+        Body: {
           Data: [
             {
               Key: 'email',
@@ -51,13 +49,21 @@ const Login = () => {
             },
           ],
         },
-        config
-      )
-      .then(() => setIsLoggedIn(true))
+      },
+    };
+    axios
+      .post('localhost', data)
+      .then(() => {
+        router.push('/');
+        setIsLoggedIn(true);
+      })
       .catch((e) => console.log(e));
     console.log(email, password);
     setIsLoggedIn(true);
   };
+  //   Access to XMLHttpRequest at 'http://localhost:8090/api/spa/useroperations/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+  // Access-Control-Allow-Origin: *
   const registerHandler = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
